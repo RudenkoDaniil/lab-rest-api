@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        nodejs 'node-18'
-    }
-
     options {
         timestamps()
     }
@@ -12,19 +8,25 @@ pipeline {
     stages {
         stage('Install') {
             steps {
-                sh 'npm install'
+                withNodeJS(nodeJSInstallationName: 'node-18') {
+                    sh 'npm install'
+                }
             }
         }
 
         stage('Build') {
             steps {
-                sh 'npm run build'
+                withNodeJS(nodeJSInstallationName: 'node-18') {
+                    sh 'npm run build'
+                }
             }
         }
 
         stage('Test') {
             steps {
-                sh 'npm run test'
+                withNodeJS(nodeJSInstallationName: 'node-18') {
+                    sh 'npm run test'
+                }
             }
         }
     }
