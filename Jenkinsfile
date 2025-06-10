@@ -6,7 +6,7 @@ pipeline {
     }
 
     environment {
-        PATH = "/Users/daniil/.jenkins/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/node-18/bin:$PATH"
+        PATH = "/usr/local/bin:$PATH"
     }
 
     stages {
