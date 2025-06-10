@@ -8,24 +8,30 @@ pipeline {
     stages {
         stage('Install') {
             steps {
-                withNodeJS(nodeJSInstallationName: 'node-18') {
-                    sh 'npm install'
+                script {
+                    withNodeJS(nodeJSInstallationName: 'node-18') {
+                        sh 'npm install'
+                    }
                 }
             }
         }
 
         stage('Build') {
             steps {
-                withNodeJS(nodeJSInstallationName: 'node-18') {
-                    sh 'npm run build'
+                script {
+                    withNodeJS(nodeJSInstallationName: 'node-18') {
+                        sh 'npm run build'
+                    }
                 }
             }
         }
 
         stage('Test') {
             steps {
-                withNodeJS(nodeJSInstallationName: 'node-18') {
-                    sh 'npm run test'
+                script {
+                    withNodeJS(nodeJSInstallationName: 'node-18') {
+                        sh 'npm run test'
+                    }
                 }
             }
         }
