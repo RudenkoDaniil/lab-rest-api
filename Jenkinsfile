@@ -5,34 +5,26 @@ pipeline {
         timestamps()
     }
 
+    environment {
+        PATH = "/Users/daniil/.jenkins/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/node-18/bin:$PATH"
+    }
+
     stages {
         stage('Install') {
             steps {
-                script {
-                    withNodeJS(nodeJSInstallationName: 'node-18') {
-                        sh 'npm install'
-                    }
-                }
+                sh 'npm install'
             }
         }
 
         stage('Build') {
             steps {
-                script {
-                    withNodeJS(nodeJSInstallationName: 'node-18') {
-                        sh 'npm run build'
-                    }
-                }
+                sh 'npm run build'
             }
         }
 
         stage('Test') {
             steps {
-                script {
-                    withNodeJS(nodeJSInstallationName: 'node-18') {
-                        sh 'npm run test'
-                    }
-                }
+                sh 'npm run test'
             }
         }
     }
